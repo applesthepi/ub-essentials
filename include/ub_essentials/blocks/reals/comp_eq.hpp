@@ -15,4 +15,4 @@ public:
 
 	std::vector<cap::mod::block::block::argument::initializer> get_arguments() const override;
 };
-}
+} // namespace ub_essentials::block::real
