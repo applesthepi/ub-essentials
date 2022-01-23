@@ -13,37 +13,38 @@ if(MSVC)
 	target_compile_options(UB_MOD_ESSENTIALS PRIVATE "/MP")
 endif()
 
-add_dependencies(UB_MOD_ESSENTIALS
-    UB_CAPPUCCINO
-    UB_ESPRESSO
-    UB_RHR
-)
-
 set_target_properties(UB_MOD_ESSENTIALS PROPERTIES OUTPUT_NAME "${MOD_UNLOCALIZED_NAME}")
+
+add_dependencies(UB_MOD_ESSENTIALS
+	${UB_DEPENDENCIES}
+	UB_CAPPUCCINO
+	UB_ESPRESSO
+	UB_RHR
+	)
 
 target_link_libraries(UB_MOD_ESSENTIALS PUBLIC
 	UB_CAPPUCCINO
-    UB_ESPRESSO
-    UB_RHR
-	
-	glad::glad
-	glfw
-#	imgui::imgui
-	Vulkan::Vulkan
-	freetype
-)
+	UB_ESPRESSO
+	UB_RHR
+	)
 
-target_include_directories(UB_MOD_ESSENTIALS PUBLIC
-	"${PROJECT_BINARY_DIR}"
-	"${CMAKE_CURRENT_SOURCE_DIR}/include"
-    "${CMAKE_SOURCE_DIR}/ub_cappuccino/include"
-    "${CMAKE_SOURCE_DIR}/ub_espresso/include"
-    "${CMAKE_SOURCE_DIR}/ub_rhr/include"
+target_include_directories(UB_MOD_ESSENTIALS PUBLIC SYSTEM
+	"${CMAKE_SOURCE_DIR}/ub_cappuccino/include"
+	"${CMAKE_SOURCE_DIR}/ub_espresso/include"
+	"${CMAKE_SOURCE_DIR}/ub_rhr/include"
+	)
 
-    ${STB_INCLUDE_DIRS}
-	${RAPIDJSON_INCLUDE_DIRS}
-	${VULKAN_INCLUDE_DIRS}
-)
+target_link_libraries(UB_MOD_ESSENTIALS PUBLIC
+	${UB_DEPENDENCIES_LINK}
+	#imm32.lib
+	)
+
+target_include_directories(UB_MOD_ESSENTIALS PUBLIC SYSTEM
+	${PROJECT_BINARY_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}/include
+	${UB_DEPENDENCIES_INCLUDE}
+	${CMAKE_INCLUDES}
+	)
 
 add_custom_command(
 	TARGET UB_MOD_ESSENTIALS POST_BUILD
