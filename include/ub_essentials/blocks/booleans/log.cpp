@@ -1,16 +1,34 @@
 #include "log.hpp"
 
-static void execute_release(cap::mod::block::pass* pass) { pass->log_info(pass->get_bool(0) ? "true" : "false"); }
+static void execute_release(cap::mod::block::pass* pass)
+{
+	pass->log_info(pass->get_bool(0) ? "true" : "false");
+}
 
-static void execute_debug(cap::mod::block::pass* pass) { execute_release(pass); }
+static void execute_debug(cap::mod::block::pass* pass)
+{
+	execute_release(pass);
+}
 
-const char* ub_essentials::block::boolean::log::get_unlocalized_name() const { return "essentials_boolean_log"; }
+const char* ub_essentials::block::boolean::log::get_unlocalized_name() const
+{
+	return "essentials_boolean_log";
+}
 
-const char* ub_essentials::block::boolean::log::get_category() const { return CATEGORY_BOOLEANS; }
+const char* ub_essentials::block::boolean::log::get_category() const
+{
+	return CATEGORY_BOOLEANS;
+}
 
-cap::mod::block::block::execution ub_essentials::block::boolean::log::pull_execute_release() const { return execute_release; }
+cap::mod::block::block::execution ub_essentials::block::boolean::log::pull_execute_release() const
+{
+	return execute_release;
+}
 
-cap::mod::block::block::execution ub_essentials::block::boolean::log::pull_execute_debug() const { return execute_debug; }
+cap::mod::block::block::execution ub_essentials::block::boolean::log::pull_execute_debug() const
+{
+	return execute_debug;
+}
 
 std::vector<cap::mod::block::block::argument::initializer> ub_essentials::block::boolean::log::get_arguments() const
 {

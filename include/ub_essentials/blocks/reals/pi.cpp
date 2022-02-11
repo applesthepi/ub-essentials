@@ -1,16 +1,34 @@
 #include "pi.hpp"
 
-static void execute_release(cap::mod::block::pass* pass) { pass->get_real(0) = 3.141592653589793; }
+static void execute_release(cap::mod::block::pass* pass)
+{
+	pass->get_real(0) = 3.141592653589793;
+}
 
-static void execute_debug(cap::mod::block::pass* pass) { execute_release(pass); }
+static void execute_debug(cap::mod::block::pass* pass)
+{
+	execute_release(pass);
+}
 
-const char* ub_essentials::block::real::pi::get_unlocalized_name() const { return "essentials_real_pi"; }
+const char* ub_essentials::block::real::pi::get_unlocalized_name() const
+{
+	return "essentials_real_pi";
+}
 
-const char* ub_essentials::block::real::pi::get_category() const { return CATEGORY_REALS; }
+const char* ub_essentials::block::real::pi::get_category() const
+{
+	return CATEGORY_REALS;
+}
 
-cap::mod::block::block::execution ub_essentials::block::real::pi::pull_execute_release() const { return execute_release; }
+cap::mod::block::block::execution ub_essentials::block::real::pi::pull_execute_release() const
+{
+	return execute_release;
+}
 
-cap::mod::block::block::execution ub_essentials::block::real::pi::pull_execute_debug() const { return execute_debug; }
+cap::mod::block::block::execution ub_essentials::block::real::pi::pull_execute_debug() const
+{
+	return execute_debug;
+}
 
 std::vector<cap::mod::block::block::argument::initializer> ub_essentials::block::real::pi::get_arguments() const
 {

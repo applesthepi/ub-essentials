@@ -1,16 +1,34 @@
 #include "or.hpp"
 
-static void execute_release(cap::mod::block::pass* pass) { pass->get_bool(2) = pass->get_bool(0) || pass->get_bool(1); }
+static void execute_release(cap::mod::block::pass* pass)
+{
+	pass->get_bool(2) = pass->get_bool(0) || pass->get_bool(1);
+}
 
-static void execute_debug(cap::mod::block::pass* pass) { execute_release(pass); }
+static void execute_debug(cap::mod::block::pass* pass)
+{
+	execute_release(pass);
+}
 
-const char* ub_essentials::block::boolean::or_::get_unlocalized_name() const { return "essentials_boolean_or"; }
+const char* ub_essentials::block::boolean::or_::get_unlocalized_name() const
+{
+	return "essentials_boolean_or";
+}
 
-const char* ub_essentials::block::boolean::or_::get_category() const { return CATEGORY_BOOLEANS; }
+const char* ub_essentials::block::boolean::or_::get_category() const
+{
+	return CATEGORY_BOOLEANS;
+}
 
-cap::mod::block::block::execution ub_essentials::block::boolean::or_::pull_execute_release() const { return execute_release; }
+cap::mod::block::block::execution ub_essentials::block::boolean::or_::pull_execute_release() const
+{
+	return execute_release;
+}
 
-cap::mod::block::block::execution ub_essentials::block::boolean::or_::pull_execute_debug() const { return execute_debug; }
+cap::mod::block::block::execution ub_essentials::block::boolean::or_::pull_execute_debug() const
+{
+	return execute_debug;
+}
 
 std::vector<cap::mod::block::block::argument::initializer> ub_essentials::block::boolean::or_::get_arguments() const
 {

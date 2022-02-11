@@ -75,10 +75,14 @@ UB_EXPORT void Initialization(esp::mod::data* data)
 	// categories
 	/////////////////////////////////////////////////////////////////
 
-	data->register_category(new ub_essentials::category::system(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
-	data->register_category(new ub_essentials::category::reals(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
-	data->register_category(new ub_essentials::category::strings(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
-	data->register_category(new ub_essentials::category::booleans(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
+	data->register_category(
+		new ub_essentials::category::system(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
+	data->register_category(
+		new ub_essentials::category::reals(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
+	data->register_category(
+		new ub_essentials::category::strings(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
+	data->register_category(
+		new ub_essentials::category::booleans(data->get_mod_unlocalized_name(), data->get_mod_display_name()));
 
 	/////////////////////////////////////////////////////////////////
 	// Blocks

@@ -1,6 +1,9 @@
 #include "char_at.hpp"
 
-static void execute_release(cap::mod::block::pass* pass) { pass->get_string(2) = pass->get_string(0).at((u64)pass->get_real(1)); }
+static void execute_release(cap::mod::block::pass* pass)
+{
+	pass->get_string(2) = pass->get_string(0).at((u64)pass->get_real(1));
+}
 
 static void execute_debug(cap::mod::block::pass* pass)
 {
@@ -11,7 +14,8 @@ static void execute_debug(cap::mod::block::pass* pass)
 	if (std::floor(ch_at) != ch_at)
 	{
 		pass->log_error(
-			"failed to get char at \"" + std::to_string(ch_at) + "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; index is a decimal",
+			"failed to get char at \"" + std::to_string(ch_at) + "\" from string \"" + str + "\" to replacing string \""
+				+ final_str + "\"; index is a decimal",
 			cap::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
@@ -21,7 +25,8 @@ static void execute_debug(cap::mod::block::pass* pass)
 	if (idx >= static_cast<i64>(str.length()) || idx < 0)
 	{
 		pass->log_error(
-			"failed to get char at \"" + std::to_string(idx) + "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; index out of range",
+			"failed to get char at \"" + std::to_string(idx) + "\" from string \"" + str + "\" to replacing string \""
+				+ final_str + "\"; index out of range",
 			cap::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
@@ -29,13 +34,25 @@ static void execute_debug(cap::mod::block::pass* pass)
 	final_str = str.at(idx);
 }
 
-const char* ub_essentials::block::string::char_at::get_unlocalized_name() const { return "essentials_string_char_at"; }
+const char* ub_essentials::block::string::char_at::get_unlocalized_name() const
+{
+	return "essentials_string_char_at";
+}
 
-const char* ub_essentials::block::string::char_at::get_category() const { return CATEGORY_STRINGS; }
+const char* ub_essentials::block::string::char_at::get_category() const
+{
+	return CATEGORY_STRINGS;
+}
 
-cap::mod::block::block::execution ub_essentials::block::string::char_at::pull_execute_release() const { return execute_release; }
+cap::mod::block::block::execution ub_essentials::block::string::char_at::pull_execute_release() const
+{
+	return execute_release;
+}
 
-cap::mod::block::block::execution ub_essentials::block::string::char_at::pull_execute_debug() const { return execute_debug; }
+cap::mod::block::block::execution ub_essentials::block::string::char_at::pull_execute_debug() const
+{
+	return execute_debug;
+}
 
 std::vector<cap::mod::block::block::argument::initializer> ub_essentials::block::string::char_at::get_arguments() const
 {
