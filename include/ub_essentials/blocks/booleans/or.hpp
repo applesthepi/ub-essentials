@@ -4,15 +4,15 @@
 
 namespace ub_essentials::block::boolean
 {
-class or_ : public cap::mod::block::block
+class or_ : public espresso::mod::block::block
 {
 public:
 	const char* get_unlocalized_name() const override;
 	const char* get_category() const override;
 
-	cap::mod::block::block::execution pull_execute_release() const override;
-	cap::mod::block::block::execution pull_execute_debug() const override;
+	espresso::mod::block::block::execution pull_execute_release() const override;
+	espresso::mod::block::block::execution pull_execute_debug() const override;
 
-	std::vector<cap::mod::block::block::argument::initializer> get_arguments() const override;
+	std::vector<espresso::mod::block::block::argument::initializer> get_arguments() const override;
 };
 } // namespace ub_essentials::block::boolean

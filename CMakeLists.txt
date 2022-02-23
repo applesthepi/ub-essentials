@@ -15,21 +15,16 @@ endif()
 set_target_properties(UB_MOD_ESSENTIALS PROPERTIES OUTPUT_NAME "${MOD_UNLOCALIZED_NAME}")
 
 add_dependencies(
-	UB_MOD_ESSENTIALS ${UB_DEPENDENCIES} UB_CAPPUCCINO UB_ESPRESSO UB_RHR)
-
-target_link_libraries(
-	UB_MOD_ESSENTIALS
-	PUBLIC UB_CAPPUCCINO UB_ESPRESSO UB_RHR)
+	UB_MOD_ESSENTIALS ${UB_DEPENDENCIES} UB_CLIENT)
 
 target_include_directories(
 	UB_MOD_ESSENTIALS
-	PUBLIC SYSTEM "${CMAKE_SOURCE_DIR}/ub_cappuccino/include"
-		   "${CMAKE_SOURCE_DIR}/ub_espresso/include" "${CMAKE_SOURCE_DIR}/ub_rhr/include")
+	PUBLIC SYSTEM ${UB_INCLUDES}
+)
 
 target_link_libraries(
 	UB_MOD_ESSENTIALS
-	PUBLIC ${UB_DEPENDENCIES_LINK}
-	# imm32.lib
+	PUBLIC ${UB_DEPENDENCIES_LINK} UB_ESPRESSO
 )
 
 target_include_directories(

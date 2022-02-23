@@ -1,11 +1,11 @@
 #include "sub_string.hpp"
 
-static void execute_release(cap::mod::block::pass* pass)
+static void execute_release(espresso::mod::block::pass* pass)
 {
 	pass->get_string(3) = pass->get_string(0).substr((u64)pass->get_real(1), (u64)pass->get_real(2));
 }
 
-static void execute_debug(cap::mod::block::pass* pass)
+static void execute_debug(espresso::mod::block::pass* pass)
 {
 	std::string& str	   = pass->get_string(0);
 	f64& offset			   = pass->get_real(1);
@@ -17,7 +17,7 @@ static void execute_debug(cap::mod::block::pass* pass)
 		pass->log_error(
 			"failed to substring at \"" + std::to_string(offset) + "\" for count \"" + std::to_string(count)
 				+ "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; offset is a decimal",
-			cap::mod::block::pass::logger_fatality::BREAK);
+			espresso::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
 
@@ -26,7 +26,7 @@ static void execute_debug(cap::mod::block::pass* pass)
 		pass->log_error(
 			"failed to substring at \"" + std::to_string(offset) + "\" for count \"" + std::to_string(count)
 				+ "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; count is a decimal",
-			cap::mod::block::pass::logger_fatality::BREAK);
+			espresso::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
 
@@ -38,7 +38,7 @@ static void execute_debug(cap::mod::block::pass* pass)
 		pass->log_error(
 			"failed to substring at \"" + std::to_string(idx_at) + "\" for count \"" + std::to_string(idx_count)
 				+ "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; offset index out of range",
-			cap::mod::block::pass::logger_fatality::BREAK);
+			espresso::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
 
@@ -47,7 +47,7 @@ static void execute_debug(cap::mod::block::pass* pass)
 		pass->log_error(
 			"failed to substring at \"" + std::to_string(idx_at) + "\" for count \"" + std::to_string(idx_count)
 				+ "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; count to high",
-			cap::mod::block::pass::logger_fatality::BREAK);
+			espresso::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
 
@@ -56,7 +56,7 @@ static void execute_debug(cap::mod::block::pass* pass)
 		pass->log_error(
 			"failed to substring at \"" + std::to_string(idx_at) + "\" for count \"" + std::to_string(idx_count)
 				+ "\" from string \"" + str + "\" to replacing string \"" + final_str + "\"; count index out of range",
-			cap::mod::block::pass::logger_fatality::BREAK);
+			espresso::mod::block::pass::logger_fatality::BREAK);
 		return;
 	}
 
@@ -73,47 +73,47 @@ const char* ub_essentials::block::string::sub_string::get_category() const
 	return CATEGORY_STRINGS;
 }
 
-cap::mod::block::block::execution ub_essentials::block::string::sub_string::pull_execute_release() const
+espresso::mod::block::block::execution ub_essentials::block::string::sub_string::pull_execute_release() const
 {
 	return execute_release;
 }
 
-cap::mod::block::block::execution ub_essentials::block::string::sub_string::pull_execute_debug() const
+espresso::mod::block::block::execution ub_essentials::block::string::sub_string::pull_execute_debug() const
 {
 	return execute_debug;
 }
 
-std::vector<cap::mod::block::block::argument::initializer>
+std::vector<espresso::mod::block::block::argument::initializer>
 ub_essentials::block::string::sub_string::get_arguments() const
 {
 	return {
-		{cap::mod::block::block::argument::type::STRING,
-		 cap::mod::block::block::argument::variable_mode_restriction::NONE,
-		 cap::mod::block::block::argument::variable_mode::VAR,
+		{espresso::mod::block::block::argument::type::STRING,
+		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
+		 espresso::mod::block::block::argument::variable_mode::VAR,
 		 "variable"},
-		{cap::mod::block::block::argument::type::TEXT,
-		 cap::mod::block::block::argument::variable_mode_restriction::NONE,
-		 cap::mod::block::block::argument::variable_mode::RAW,
+		{espresso::mod::block::block::argument::type::TEXT,
+		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
+		 espresso::mod::block::block::argument::variable_mode::RAW,
 		 "at"		 },
-		{cap::mod::block::block::argument::type::REAL,
-		 cap::mod::block::block::argument::variable_mode_restriction::NONE,
-		 cap::mod::block::block::argument::variable_mode::RAW,
+		{espresso::mod::block::block::argument::type::REAL,
+		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
+		 espresso::mod::block::block::argument::variable_mode::RAW,
 		 "0"		},
-		{cap::mod::block::block::argument::type::TEXT,
-		 cap::mod::block::block::argument::variable_mode_restriction::NONE,
-		 cap::mod::block::block::argument::variable_mode::RAW,
+		{espresso::mod::block::block::argument::type::TEXT,
+		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
+		 espresso::mod::block::block::argument::variable_mode::RAW,
 		 "count"	},
-		{cap::mod::block::block::argument::type::REAL,
-		 cap::mod::block::block::argument::variable_mode_restriction::NONE,
-		 cap::mod::block::block::argument::variable_mode::RAW,
+		{espresso::mod::block::block::argument::type::REAL,
+		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
+		 espresso::mod::block::block::argument::variable_mode::RAW,
 		 "1"		},
-		{cap::mod::block::block::argument::type::TEXT,
-		 cap::mod::block::block::argument::variable_mode_restriction::NONE,
-		 cap::mod::block::block::argument::variable_mode::RAW,
+		{espresso::mod::block::block::argument::type::TEXT,
+		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
+		 espresso::mod::block::block::argument::variable_mode::RAW,
 		 "for"	  },
-		{cap::mod::block::block::argument::type::STRING,
-		 cap::mod::block::block::argument::variable_mode_restriction::RESTRICTED,
-		 cap::mod::block::block::argument::variable_mode::VAR,
+		{espresso::mod::block::block::argument::type::STRING,
+		 espresso::mod::block::block::argument::variable_mode_restriction::RESTRICTED,
+		 espresso::mod::block::block::argument::variable_mode::VAR,
 		 "variable"}
 	};
 }
