@@ -58,10 +58,10 @@
 
 UB_EXPORT void Initialization(esp::mod::data* data)
 {
-	cap::logger::initialize();
-	cap::logger::set_stream_system(data->get_stream_system());
-	cap::logger::set_stream_editor(data->get_stream_editor());
-	cap::logger::set_stream_runtime(data->get_stream_runtime());
+	latte::logger::initialize();
+	latte::logger::set_stream_system(data->get_stream_system());
+	latte::logger::set_stream_editor(data->get_stream_editor());
+	latte::logger::set_stream_runtime(data->get_stream_runtime());
 
 	/////////////////////////////////////////////////////////////////
 	// mod information
