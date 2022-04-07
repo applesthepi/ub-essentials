@@ -1,9 +1,7 @@
 #pragma once
 #include "config.h"
 
-#include "categories.hpp"
-
-#include <espresso/mod/data.hpp>
+#include <espresso/mod_data.hpp>
 
 #if LINUX
 #define UB_EXPORT extern "C"
@@ -11,4 +9,4 @@
 #define UB_EXPORT extern "C" __declspec(dllexport)
 #endif
 
-UB_EXPORT void Initialization(esp::mod::data* data);
+UB_EXPORT void initialization(esp::mod_data* mod_data);

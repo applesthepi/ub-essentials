@@ -1,45 +1,30 @@
 #include "log.hpp"
 
-static void execute_release(espresso::mod::block::pass* pass)
+#include "ub_essentials/arguments/real.hpp"
+
+std::string essentials::block::real::log::get_mod_unlocalized_name()
 {
-	pass->log_info(std::to_string(pass->get_real(0)));
+	return ESSENTIALS_UNLOCALIZED;
 }
 
-static void execute_debug(espresso::mod::block::pass* pass)
+const char* essentials::block::real::log::get_unlocalized_name()
 {
-	execute_release(pass);
+	return essentials::block::REAL_LOG;
 }
 
-const char* ub_essentials::block::real::log::get_unlocalized_name() const
+const char* essentials::block::real::log::get_category()
 {
-	return "essentials_real_log";
+	return essentials::category::REALS;
 }
 
-const char* ub_essentials::block::real::log::get_category() const
+bool essentials::block::real::log::is_topical()
 {
-	return CATEGORY_REALS;
+	return false;
 }
 
-espresso::mod::block::block::execution ub_essentials::block::real::log::pull_execute_release() const
-{
-	return execute_release;
-}
-
-espresso::mod::block::block::execution ub_essentials::block::real::log::pull_execute_debug() const
-{
-	return execute_debug;
-}
-
-std::vector<espresso::mod::block::block::argument::initializer> ub_essentials::block::real::log::get_arguments() const
+std::vector<esp::argument::initializer> essentials::block::real::log::get_arguments()
 {
 	return {
-		{espresso::mod::block::block::argument::type::TEXT,
-		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
-		 espresso::mod::block::block::argument::variable_mode::RAW,
-		 "log"	  },
-		{espresso::mod::block::block::argument::type::REAL,
-		 espresso::mod::block::block::argument::variable_mode_restriction::NONE,
-		 espresso::mod::block::block::argument::variable_mode::VAR,
-		 "variable"}
+		essentials::argument::real::get_initializer(esp::argument::mode::RAW, esp::argument::mode_restriction::NONE, 3.14159)
 	};
 }

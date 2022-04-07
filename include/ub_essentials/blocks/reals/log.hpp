@@ -1,18 +1,17 @@
 #pragma once
-#include "ub_essentials/categories.hpp"
-#include <espresso/mod/data.hpp>
+#include "config.h"
 
-namespace ub_essentials::block::real
+#include "ub_essentials/essentials.hpp"
+
+namespace essentials::block::real
 {
-class log : public espresso::mod::block::block
+class log : public esp::block
 {
 public:
-	const char* get_unlocalized_name() const override;
-	const char* get_category() const override;
-
-	espresso::mod::block::block::execution pull_execute_release() const override;
-	espresso::mod::block::block::execution pull_execute_debug() const override;
-
-	std::vector<espresso::mod::block::block::argument::initializer> get_arguments() const override;
+	std::string get_mod_unlocalized_name() override;
+	const char* get_unlocalized_name() override;
+	const char* get_category() override;
+	bool is_topical() override;
+	std::vector<esp::argument::initializer> get_arguments() override;
 };
-} // namespace ub_essentials::block::real
+}
