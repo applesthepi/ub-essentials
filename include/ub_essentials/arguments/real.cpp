@@ -65,7 +65,8 @@ void essentials::argument::real::create(esp::argument::state* state, argument::i
 	state_custom->m_decor_right_top->set_offset(state->plane_offset);
 	state_custom->m_decor_right_bottom->set_offset(state->plane_offset);
 
-	state_custom->m_text->set_offset(state->plane_offset);
+	state_custom->m_text->initialize();
+	state_custom->m_text->set_static_offset(state->plane_offset);
 	state_custom->m_text->set_update_function(&state_custom->m_function_text_update);
 	state_custom->m_text->set_weak_field(state_custom->m_text);
 	state_custom->m_text->set_depth(rhr::render::renderer::depth_argument_text);
@@ -237,7 +238,7 @@ void essentials::argument::real::ui_static_offset_update(esp::argument::state* s
 	state_custom->m_decor_right_top->set_offset(state->plane_offset);
 	state_custom->m_decor_right_bottom->set_offset(state->plane_offset);
 
-	state_custom->m_text->set_offset(state->plane_offset);
+	state_custom->m_text->set_static_offset(state->plane_offset);
 }
 
 void essentials::argument::real::ui_serialize(esp::argument::state* state, latte::serializer::node& node)
