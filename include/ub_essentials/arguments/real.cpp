@@ -71,7 +71,7 @@ void essentials::argument::real::create(esp::argument::state* state, argument::i
 	state_custom->m_text->set_weak_field(state_custom->m_text);
 	state_custom->m_text->set_depth(rhr::render::renderer::depth_argument_text);
 	state_custom->m_text->set_color_primary(espresso::color::text_primary_color);
-	state_custom->m_text->set_color_secondary(state->block_color);
+	state_custom->m_text->set_color_secondary(state->block_color.get_scaled(BLOCK_ARG_DIFF, false));
 	state_custom->m_text->set_padding(esp::argument::padding);
 	state_custom->m_text->set_mouse_button(state_custom->m_mouse_button);
 	state_custom->m_text->set_text(initializer_custom->text);
@@ -130,10 +130,10 @@ void essentials::argument::real::ui_transform_update(
 	state_custom->m_text->set_position_local_physical({ ESSENTIALS_REAL_DECOR_WIDTH, 0 }, true);
 
 	glm::vec<2, f64> pos = state->parent->get_position_physical_absolute();
-	state_custom->m_decor_left_top->set_super_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
-	state_custom->m_decor_left_bottom->set_super_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
-	state_custom->m_decor_right_top->set_super_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
-	state_custom->m_decor_right_bottom->set_super_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
+	state_custom->m_decor_left_top->set_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
+	state_custom->m_decor_left_bottom->set_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
+	state_custom->m_decor_right_top->set_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
+	state_custom->m_decor_right_bottom->set_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
 
 	state->parent->mark_dirty();
 }
@@ -176,7 +176,7 @@ void essentials::argument::real::ui_update_buffers(esp::argument::state* state)
 	rhr::render::vertex vertices[12];
 	f32 other_side = ESSENTIALS_REAL_DECOR_WIDTH + state_custom->m_text->get_size_local().x;
 
-	espresso::color use_color = state->block_color;
+	espresso::color use_color = state->block_color.get_scaled(BLOCK_ARG_DIFF, false);
 	if (state->mode == esp::argument::mode::VAR)
 		use_color = espresso::color().from_u8({ 100, 0, 40, 255 });
 
