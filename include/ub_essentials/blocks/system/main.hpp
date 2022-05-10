@@ -3,9 +3,9 @@
 
 #include "ub_essentials/essentials.hpp"
 
-namespace essentials::block::real
+namespace essentials::block::system
 {
-class log : public esp::block
+class main : public esp::block
 {
 public:
 	const char* get_unlocalized_name() override;

@@ -1,11 +1,7 @@
 #include "log.hpp"
 
+#include "ub_essentials/arguments/text.hpp"
 #include "ub_essentials/arguments/real.hpp"
-
-std::string essentials::block::real::log::get_mod_unlocalized_name()
-{
-	return ESSENTIALS_UNLOCALIZED;
-}
 
 const char* essentials::block::real::log::get_unlocalized_name()
 {
@@ -17,6 +13,11 @@ const char* essentials::block::real::log::get_category()
 	return essentials::category::REALS;
 }
 
+const char* essentials::block::real::log::get_ubbs_instance()
+{
+	return "println!(\"{}\", <<<0>>>);";
+}
+
 bool essentials::block::real::log::is_topical()
 {
 	return false;
@@ -25,6 +26,7 @@ bool essentials::block::real::log::is_topical()
 std::vector<esp::argument::initializer> essentials::block::real::log::get_arguments()
 {
 	return {
-		essentials::argument::real::get_initializer(esp::argument::mode::RAW, esp::argument::mode_restriction::NONE, 3.14159)
+		essentials::argument::text::get_initializer(esp::argument::mode::RAW, esp::argument::mode_restriction::NONE, "log"),
+		essentials::argument::real::get_initializer(esp::argument::mode::RAW, esp::argument::mode_restriction::NONE, 3.1415)
 	};
 }

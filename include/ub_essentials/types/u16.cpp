@@ -5,7 +5,12 @@ const char* essentials::type::u16::get_unlocalized_name()
 	return essentials::type::U16;
 }
 
-const char* essentials::type::u16::get_ubbs_instance()
+const char* essentials::type::u16::get_ubbs_instance_r()
+{
+	return "u16 = <<<>>>";
+}
+
+const char* essentials::type::u16::get_ubbs_instance_l()
 {
 	return "u16 = 0";
 }

@@ -7,15 +7,15 @@
 #include <lungo/objects/object.hpp>
 #include <lungo/objects/text.hpp>
 
-#define ESSENTIALS_TEXT_DECOR_WIDTH 6
+#define ESSENTIALS_TEXT_DECOR_WIDTH 0
 #define ESSENTIALS_TEXT_SERIALIZE { "data" }
 
 namespace essentials::argument
 {
-class real : public esp::argument
+class text : public esp::argument
 {
 public:
-	static esp::argument::initializer get_initializer(esp::argument::mode mode, esp::argument::mode_restriction mode_restriction, double v0);
+	static esp::argument::initializer get_initializer(esp::argument::mode mode, esp::argument::mode_restriction mode_restriction, const std::string& v0);
 protected:
 	void create(argument::state* state, argument::initializer* initializer) override;
 	void destroy(argument::state* state) override;
@@ -43,15 +43,10 @@ protected:
 private:
 	struct custom
 	{
-		std::shared_ptr<rhr::render::object::text> m_text;
-
-		std::shared_ptr<rhr::render::object::object> m_decor_left_top;
-		std::shared_ptr<rhr::render::object::object> m_decor_left_bottom;
-		std::shared_ptr<rhr::render::object::object> m_decor_right_top;
-		std::shared_ptr<rhr::render::object::object> m_decor_right_bottom;
-
 		std::function<void(rhr::handler::input::mouse_button_data)> m_mouse_button;
 		std::function<void()> m_function_text_update;
+
+		std::shared_ptr<rhr::render::object::text> m_text;
 	};
 
 	struct custom_initializer

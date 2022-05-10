@@ -24,7 +24,7 @@ target_include_directories(
 
 target_link_libraries(
 	UB_MOD_ESSENTIALS
-	PUBLIC ${UB_DEPENDENCIES_LINK} UB_ESPRESSO UB_LUNGO
+	PUBLIC ${UB_DEPENDENCIES_LINK} UB_ESPRESSO UB_LUNGO UB_MOCHA
 )
 
 target_include_directories(

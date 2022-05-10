@@ -12,7 +12,8 @@ class i8 : public esp::type
 {
 public:
 	const char* get_unlocalized_name() override;
-	const char* get_ubbs_instance() override;
+	const char* get_ubbs_instance_r() override;
+	const char* get_ubbs_instance_l() override;
 	const char* get_ubbs_definition() override;
 };
 }

@@ -1,35 +1,29 @@
 #include "categories.hpp"
 
-/*espresso::color essentials::category::system::get_color() const
+std::string essentials::category::system::get_mod_unlocalized_name()
 {
-	return espresso::color().from_u8({88, 95, 179, 255});
+	return ESSENTIALS_UNLOCALIZED;
 }
 
-std::string essentials::category::system::get_unlocalized_name() const
+std::string essentials::category::system::get_mod_display_name()
 {
-	return essentials::category::REALS;
+	return ESSENTIALS_DISPLAY;
 }
 
-std::string essentials::category::system::get_display_name() const
+espresso::color essentials::category::system::get_color()
+{
+	return espresso::color().from_u8({ 33, 65, 84, 255 });
+}
+
+std::string essentials::category::system::get_unlocalized_name()
+{
+	return essentials::category::SYSTEM;
+}
+
+std::string essentials::category::system::get_display_name()
 {
 	return "system";
 }
-
-espresso::color essentials::category::booleans::get_color() const
-{
-	return espresso::color().from_u8({230, 103, 67, 255});
-}
-
-std::string essentials::category::booleans::get_unlocalized_name() const
-{
-	return CATEGORY_BOOLEANS;
-}
-
-std::string essentials::category::booleans::get_display_name() const
-{
-	return "booleans";
-}
-*/
 
 std::string essentials::category::reals::get_mod_unlocalized_name()
 {
@@ -55,19 +49,3 @@ std::string essentials::category::reals::get_display_name()
 {
 	return "reals";
 }
-/*
-espresso::color essentials::category::strings::get_color() const
-{
-	return espresso::color().from_u8({16, 167, 167, 255});
-}
-
-std::string essentials::category::strings::get_unlocalized_name() const
-{
-	return CATEGORY_STRINGS;
-}
-
-std::string essentials::category::strings::get_display_name() const
-{
-	return "strings";
-}
-*/

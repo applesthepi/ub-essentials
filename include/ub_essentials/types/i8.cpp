@@ -5,7 +5,12 @@ const char* essentials::type::i8::get_unlocalized_name()
 	return essentials::type::I8;
 }
 
-const char* essentials::type::i8::get_ubbs_instance()
+const char* essentials::type::i8::get_ubbs_instance_r()
+{
+	return "i8 = <<<>>>";
+}
+
+const char* essentials::type::i8::get_ubbs_instance_l()
 {
 	return "i8 = 0";
 }
