@@ -44,6 +44,8 @@ UB_EXPORT void initialization(esp::mod_data* mod_data)
 	// MOD SETUP
 	//
 
+	// TODO: you shouldn't have to do any of this yourself
+
 	latte::logger::initialize();
 	rhr::handler::input::initialize();
 
@@ -96,8 +98,10 @@ UB_EXPORT void initialization(esp::mod_data* mod_data)
 	// BLOCKS
 	//
 
-	REGISTER_BLOCK(new essentials::block::real::log());
-	REGISTER_BLOCK(new essentials::block::system::main());
+	//REGISTER_BLOCK();
+
+	//REGISTER_BLOCK(new essentials::block::real::log());
+	//REGISTER_BLOCK(new essentials::block::system::main());
 
 	//
 	// CATEGORIES

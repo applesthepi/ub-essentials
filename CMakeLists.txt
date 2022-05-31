@@ -32,8 +32,16 @@ target_include_directories(
 	PUBLIC SYSTEM ${PROJECT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/include
 		   ${UB_DEPENDENCIES_INCLUDE} ${CMAKE_INCLUDES})
 
+# Copy Binary
 add_custom_command(
 	TARGET UB_MOD_ESSENTIALS
 	POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:UB_MOD_ESSENTIALS>
 			$<TARGET_FILE_DIR:UB_CLIENT>/mods/)
+
+# Copy Resources
+add_custom_command(
+	TARGET UB_MOD_ESSENTIALS
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/essentials"
+	$<TARGET_FILE_DIR:UB_CLIENT>/mods/essentials)

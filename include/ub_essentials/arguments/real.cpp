@@ -9,6 +9,8 @@ esp::argument::initializer essentials::argument::real::get_initializer(esp::argu
 {
 	auto init = new custom_initializer();
 	init->text = std::to_string(v0);
+	STRING_DOUBLE_ZERO(init->text);
+
 	return {esp::registry::get()->get_argument(essentials::argument::REAL), mode, mode_restriction, reinterpret_cast<void*>(init) };
 }
 
@@ -107,7 +109,7 @@ esp::argument::mode_restriction essentials::argument::real::get_mode_restriction
 u32 essentials::argument::real::get_width(esp::argument::state* state)
 {
 	auto state_custom = reinterpret_cast<custom*>(state->custom);
-	return state_custom->m_text->get_size_local().x + (2 * ESSENTIALS_TEXT_DECOR_WIDTH);
+	return state_custom->m_text->get_size_local().x + (2 * ESSENTIALS_REAL_DECOR_WIDTH);
 }
 
 bool essentials::argument::real::capture_mouse()
@@ -122,7 +124,7 @@ void essentials::argument::real::ui_transform_update(
 	auto state_custom = reinterpret_cast<custom*>(state->custom);
 
 	state->parent->update_child_transform(state_custom->m_text, false);
-	state_custom->m_text->set_position_local_physical({ ESSENTIALS_TEXT_DECOR_WIDTH, 0 }, true);
+	state_custom->m_text->set_position_local_physical({ ESSENTIALS_REAL_DECOR_WIDTH, 0 }, true);
 
 	glm::vec<2, f64> pos = state->parent->get_position_physical_absolute();
 	state_custom->m_decor_left_top->set_position({pos.x, pos.y, rhr::render::renderer::depth_argument});
@@ -169,34 +171,34 @@ void essentials::argument::real::ui_update_buffers(esp::argument::state* state)
 	state_custom->m_text->update_buffers();
 
 	rhr::render::vertex vertices[12];
-	f32 other_side = ESSENTIALS_TEXT_DECOR_WIDTH + state_custom->m_text->get_size_local().x;
+	f32 other_side = ESSENTIALS_REAL_DECOR_WIDTH + state_custom->m_text->get_size_local().x;
 
 	espresso::color use_color = state->block_color.get_scaled(BLOCK_ARG_DIFF, false);
 	if (state->mode == esp::argument::mode::VAR)
 		use_color = espresso::color().from_u8({ 100, 0, 40, 255 });
 
 	vertices[0] =
-		rhr::render::vertex({ static_cast<f32>(ESSENTIALS_TEXT_DECOR_WIDTH), 0, 0 }, use_color.get_normalized(), { 0.0f, 0.0f });
+		rhr::render::vertex({ static_cast<f32>(ESSENTIALS_REAL_DECOR_WIDTH), 0, 0 }, use_color.get_normalized(), { 0.0f, 0.0f });
 	vertices[1] = rhr::render::vertex({0, 0, 0}, use_color.get_normalized(), { 0.0f, 0.0f });
 	vertices[2] = rhr::render::vertex(
-		{ static_cast<f32>(ESSENTIALS_TEXT_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT / 2), 0 },
+		{ static_cast<f32>(ESSENTIALS_REAL_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT / 2), 0 },
 		use_color.get_normalized(),
 		{0.0f, 0.0f});
 
 	vertices[3] = rhr::render::vertex(
-		{ static_cast<f32>(ESSENTIALS_TEXT_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT / 2), 0 },
+		{ static_cast<f32>(ESSENTIALS_REAL_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT / 2), 0 },
 		use_color.get_normalized(),
 		{0.0f, 0.0f});
 	vertices[4] = rhr::render::vertex(
 		{ 0, static_cast<f32>(BLOCK_HEIGHT_CONTENT), 0}, use_color.get_normalized(), { 0.0f, 0.0f });
 	vertices[5] = rhr::render::vertex(
-		{ static_cast<f32>(ESSENTIALS_TEXT_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT), 0},
+		{ static_cast<f32>(ESSENTIALS_REAL_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT), 0},
 		use_color.get_normalized(),
 		{0.0f, 0.0f});
 
 	vertices[6] = rhr::render::vertex({ other_side, 0, 0 }, use_color.get_normalized(), { 0.0f, 0.0f });
 	vertices[7] = rhr::render::vertex(
-		{ other_side + static_cast<f32>(ESSENTIALS_TEXT_DECOR_WIDTH), 0, 0}, use_color.get_normalized(), { 0.0f, 0.0f });
+		{ other_side + static_cast<f32>(ESSENTIALS_REAL_DECOR_WIDTH), 0, 0}, use_color.get_normalized(), { 0.0f, 0.0f });
 	vertices[8] = rhr::render::vertex(
 		{ other_side, static_cast<f32>(BLOCK_HEIGHT_CONTENT / 2), 0 },
 		use_color.get_normalized(),
@@ -207,7 +209,7 @@ void essentials::argument::real::ui_update_buffers(esp::argument::state* state)
 		use_color.get_normalized(),
 		{ 0.0f, 0.0f });
 	vertices[10] = rhr::render::vertex(
-		{ other_side + static_cast<f32>(ESSENTIALS_TEXT_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT), 0 },
+		{ other_side + static_cast<f32>(ESSENTIALS_REAL_DECOR_WIDTH), static_cast<f32>(BLOCK_HEIGHT_CONTENT), 0 },
 		use_color.get_normalized(),
 		{ 0.0f, 0.0f });
 	vertices[11] = rhr::render::vertex(
@@ -251,7 +253,7 @@ void essentials::argument::real::ui_deserialize(esp::argument::state* state, lat
 {
 	auto state_custom = reinterpret_cast<custom*>(state->custom);
 
-	if (!node.verify_data(ESSENTIALS_TEXT_SERIALIZE))
+	if (!node.verify_data(ESSENTIALS_REAL_SERIALIZE))
 	{
 		latte::logger::error(latte::logger::level::EDITOR, __FILE__, __LINE__, "failed to deserialize real argument; invalid data");
 		return;

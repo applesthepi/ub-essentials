@@ -7,8 +7,8 @@
 #include <lungo/objects/object.hpp>
 #include <lungo/objects/text.hpp>
 
-#define ESSENTIALS_TEXT_DECOR_WIDTH 6
-#define ESSENTIALS_TEXT_SERIALIZE { "data" }
+#define ESSENTIALS_REAL_DECOR_WIDTH 6
+#define ESSENTIALS_REAL_SERIALIZE { "data" }
 
 namespace essentials::argument
 {
